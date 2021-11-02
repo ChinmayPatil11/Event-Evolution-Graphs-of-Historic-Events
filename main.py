@@ -38,6 +38,7 @@ default_stylesheet = [{
 elements = create_dash_graph(G)
 #print(elements)
 app = dash.Dash(__name__)
+server = app.server
 
 app.layout = html.Div([html.H1('A graph of events in history',style={'textAlign':'center'}),
     html.Div([
