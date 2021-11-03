@@ -11,14 +11,17 @@ from data_cleaner import clean_df
 import pandas as pd
 import os
 
-path = '/data'
+'''path = '/data'
 csv_files = []
 for file in os.listdir(os.curdir + path):
     if file.endswith('.csv'):
-        csv_files.append(file)
+        csv_files.append(file)'''
+
+csv_files = ['data/17th_century.csv','data/18th_century.csv','data/19th_century.csv']
 
 for file in csv_files:
-    df = pd.read_csv('data/'+file)
+    #df = pd.read_csv('data/'+file)
+    df = pd.read_csv(file)
     df = pattern_matcher(df)
     df = clean_df(df)
     G = create_graph(df)
@@ -54,7 +57,7 @@ app.layout = html.Div([html.H1('A graph of events in history',style={'textAlign'
                                            1900: '1900'
                                        }),
                        cyto.Cytoscape(id='cytoscape-graph',
-                                      layout={'name': 'cose'},
+                                      layout={'name': 'random'},
                                       style={'width': '100%', 'height': '600px','border': 'thin lightgrey solid'},
                                       elements=elements,
                                       stylesheet=default_stylesheet)]
