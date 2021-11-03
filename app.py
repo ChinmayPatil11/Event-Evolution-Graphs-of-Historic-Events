@@ -11,14 +11,14 @@ from data_cleaner import clean_df
 import pandas as pd
 import os
 
-path = '\data'
+path = '/data'
 csv_files = []
 for file in os.listdir(os.curdir + path):
     if file.endswith('.csv'):
         csv_files.append(file)
 
 for file in csv_files:
-    df = pd.read_csv('data\\'+file)
+    df = pd.read_csv('data/'+file)
     df = pattern_matcher(df)
     df = clean_df(df)
     G = create_graph(df)
