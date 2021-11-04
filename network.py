@@ -33,15 +33,11 @@ def create_dash_graph(G):
     pos = nx.spring_layout(G)
     cy = nx.readwrite.cytoscape_data(G)
     for node in cy['elements']['nodes']:
-        for k,v in node.items():
+        for k, v in node.items():
             v['label'] = v.pop('value')
-    for n,p in zip(cy['elements']['nodes'],pos.values()):
+    for n, p in zip(cy['elements']['nodes'],pos.values()):
         n['pos'] = {'x':p[0],'y':p[1]}
     for edge in cy['elements']['edges']:
         edge['data']['id'] = edge['data']['source'] + edge['data']['target']
     element_ls = cy['elements']['nodes'] + cy['elements']['edges']
-    #'1600:': array([0.73421043, 0.3635188 ] pos
-    #{'nodes': [{'data': {'id': '1600:', 'value': '1600:', 'name': '1600:'}} cy
-    #{'data': {'relation': None, 'source': '1899–1900:', 'target': 'famine', 'key': 0}}
-    #print(cy['elements']['edges'][:5])
     return element_ls

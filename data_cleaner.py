@@ -21,9 +21,7 @@ def clean_df(df):
     df['object'] = df['object'].apply(lambda x: remove_extra_entities(x))
     df['subject'] = df['subject'].apply(lambda x: remove_extra_entities(x))
     df['year'] = df['year'].str.rstrip(':')
-    #print(df['year'])
     new_columns = df['year'].str.split('–', n=1, expand=True)
     df['year from'] = new_columns[0]
     df['year to'] = new_columns[1]
-    #print(df.columns)
     return df
